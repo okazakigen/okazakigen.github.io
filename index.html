@@ -36,5 +36,17 @@
         // 將來訪人數更新到HTML元素中
         document.getElementById("visitor-count").textContent = "來訪人數：" + visitorCount;
     </script>
+    
+    <!-- Python代碼 -->
+    <script>
+        // 使用JavaScript發送HTTP請求到後端Python服務來更新來訪人數
+        fetch('/update_visitor_count')
+            .then(response => response.json())
+            .then(data => {
+                // 將來訪人數更新到HTML元素中
+                document.getElementById("visitor-count").textContent = "來訪人數：" + data.count;
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
 </body>
 </html>
