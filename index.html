@@ -16,6 +16,23 @@
             text-align: center;
             font-weight: bold;
         }
+
+        /* 添加選單樣式 */
+        #menu {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+
+        /* 選單項目樣式 */
+        #menu ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #menu ul li {
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
@@ -25,17 +42,16 @@
     <!-- 顯示來訪人數的元素 -->
     <div id="visitor-count">來訪人數：0</div>
     
-    <script>
-        // 使用JavaScript更新來訪人數
-        let visitorCount = 0;
-        
-        // 這只是一個示例，實際上你需要從後端服務獲取來訪人數
-        // 在這個示例中，我們假設每次刷新頁面時來訪人數增加1
-        visitorCount += 1;
-        
-        // 將來訪人數更新到HTML元素中
-        document.getElementById("visitor-count").textContent = "來訪人數：" + visitorCount;
-    </script>
+    <!-- 選單 -->
+    <div id="menu">
+        <ul>
+            <li><a href="#self-introduction">自我介紹</a></li>
+            <li><a href="#games">遊戲</a></li>
+            <li><a href="#music">音樂</a></li>
+            <li><a href="#contact">官方聯絡方式</a></li>
+            <li><a href="#admin">後臺維護</a></li>
+        </ul>
+    </div>
     
     <!-- Python代碼 -->
     <script>
