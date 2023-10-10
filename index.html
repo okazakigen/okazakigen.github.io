@@ -2,9 +2,34 @@
 <html>
 <head>
     <title>我的第一個網頁</title>
+    <style>
+        /* 使用CSS將來訪人數定位在右下角 */
+        #visitor-count {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-size: 24px;
+        }
+    </style>
 </head>
 <body>
     <h1>歡迎來到我的網站！</h1>
     <p>這是我的第一個 HTML 網頁。</p>
+    
+    <!-- 顯示來訪人數的元素 -->
+    <div id="visitor-count">來訪人數：0</div>
+    
+    <script>
+        // 使用JavaScript更新來訪人數
+        let visitorCount = 0;
+        
+        // 這只是一個示例，實際上你需要從後端服務獲取來訪人數
+        // 在這個示例中，我們假設每次刷新頁面時來訪人數增加1
+        visitorCount += 1;
+        
+        // 將來訪人數更新到HTML元素中
+        document.getElementById("visitor-count").textContent = "來訪人數：" + visitorCount;
+    </script>
 </body>
 </html>
+
