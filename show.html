@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Chat Window</title>
+    <!-- 前端代码不再包含 API 密钥 -->
+</head>
+<body>
+    <div id="chat-container">
+        <!-- ... -->
+    </div>
+    <input type="text" id="message" placeholder="输入消息" onkeyup="handleKeyUp(event)">
+    <button onclick="sendMessage()">发送</button>
+    
+    <script>
+        // JavaScript 代码处理消息发送和接收
+        function sendMessage() {
+            var message = document.getElementById("message").value;
+            if (message) {
+                addMessage("You: " + message);
+                document.getElementById("message").value = "";
+                
+                // 发送消息到服务器
+                callServer(message);
+            }
+        }
+
+        function addMessage(message) {
+            var chatMessages = document.getElementById("chat-messages");
+            var messageDiv = document.createElement("div");
+            messageDiv.textContent = message;
+            chatMessages.appendChild(messageDiv);
+        }
+
+        function callServer(message) {
+            fetch('/callOpenAI', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: message })
+            })
+            .then(response => response.json())
+            .then(data => {
+                var response = data.response;
+                addMessage("ChatGPT: " + response);
+            })
+            .catch(error => {
+                console.error(error);
+                addMessage("ChatGPT: 对不起，出现了一个错误。");
+            });
+        }
+
+        // 处理按Enter键发送消息
+        function handleKeyUp(event) {
+            if (event.key === "Enter") {
+                sendMessage();
+            }
+        }
+    </script>
+</body>
+</html>
