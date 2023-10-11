@@ -26,14 +26,14 @@
         }
 
         function addMessage(message) {
-            var chatMessages = document.getElementById("chat-messages");
+            var chatMessages = document.getElementById("chat-container"); // 修改此行
             var messageDiv = document.createElement("div");
             messageDiv.textContent = message;
             chatMessages.appendChild(messageDiv);
         }
 
         function callServer(message) {
-            fetch('/callOpenAI', {
+            fetch('http://localhost:3000/callOpenAI', { // 修改此行，确保端口号正确
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
